@@ -7,8 +7,6 @@ const config: ThemeConfig = {
 
 const theme = extendTheme({
   config,
-  styles: {
-  },
 });
 
 export default theme;

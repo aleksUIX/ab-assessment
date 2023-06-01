@@ -1,8 +1,7 @@
 // borrowed from https://s-yadav.github.io/react-number-format/docs/customization
 // format expiry date as MM/YY
 
-
-const format = (val: string) => {
+export default function format(val: string) {
   if (val === '') return '';
   let month = val.substring(0, 2);
   const year = val.substring(2, 4);
@@ -21,4 +20,3 @@ const format = (val: string) => {
   return `${month}/${year}`;
 };
 
-export default format
