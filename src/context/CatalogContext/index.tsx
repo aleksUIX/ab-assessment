@@ -1,8 +1,8 @@
 import React, { createContext, useState } from "react";
 
-import punkBand from "../band-json/punk-band.json";
-import kpopBand from "../band-json/kpop-band.json";
-import skaBand from "../band-json/ska-band.json";
+import punkBand from "../../band-json/punk-band.json";
+import kpopBand from "../../band-json/kpop-band.json";
+import skaBand from "../../band-json/ska-band.json";
 
 function createInitialCatalog() {
   return [punkBand, kpopBand, skaBand];

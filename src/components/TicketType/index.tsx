@@ -1,4 +1,4 @@
-import currencyFormatter from "../utils/currencyFormatter";
+import currencyFormatter from "../../utils/currencyFormatter";
 
 import {
   NumberInput,
@@ -8,11 +8,7 @@ import {
   NumberDecrementStepper,
 } from "@chakra-ui/react";
 
-interface TicketFormProps {
-  ticket: any;
-}
-
-function TicketType({ ticket }: TicketFormProps) {
+function TicketType({ ticket, onChange }: TicketFormProps) {
   const { name, description, cost } = ticket;
 
   return (
@@ -20,11 +16,21 @@ function TicketType({ ticket }: TicketFormProps) {
       <div className="col-span-3">
         <p className="text-2xl mb-4">{name}</p>
         <p className="mb-4">{description}</p>
-        <p className="text-2xl">{currencyFormatter(cost / 100)}</p>
+        <p className="text-2xl">{currencyFormatter(cost, 2)}</p>
       </div>
       <div className="flex justify-end">
         <div className="w-20">
-          <NumberInput className="bg-white border-gray-400" max={10} min={0}>
+          <NumberInput
+            className="bg-white border-gray-400"
+            max={999}
+            min={0}
+            onChange={(value) =>  {
+              const asNum = parseInt(value)
+              if (!isNaN(asNum) && asNum > 0) {
+                onChange(asNum)
+              }
+            }}
+          >
             <NumberInputField />
             <NumberInputStepper>
               <NumberIncrementStepper />

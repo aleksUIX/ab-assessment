@@ -1,0 +1,3 @@
+interface BandFormProps {
+  band: any;
+}

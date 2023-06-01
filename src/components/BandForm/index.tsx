@@ -1,20 +1,27 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import htmlParse from "html-react-parser";
 import sanitizeHtml from "sanitize-html";
 import { Button, Input } from "@chakra-ui/react";
 
-import expiryDateFormat from "../utils/expiryDateFormat";
-import dateFormatter from "../utils/dateFormatter";
-import TicketType from "./TicketType";
+import { CartContext } from "../../context/CartContext";
 
-interface BandFormProps {
-  band: any;
-}
+import TicketType from "../TicketType";
+
+import currencyFormatter from "../../utils/currencyFormatter";
+import expiryDateFormat from "../../utils/expiryDateFormat";
+import dateFormatter from "../../utils/dateFormatter";
+
 
 function BandForm({ band }: BandFormProps) {
   const { name, location, description_blurb, date, imgUrl } = band;
-  const [ccNumber, setCCNumber] = useState("");
+  const cartCtx = useContext(CartContext);
+  const { cart, updateCart } = cartCtx;
   const [ccExpiry, setCCExpiry] = useState("");
+
+  // sum up cart total
+  const cartTotal = cart.reduce((acc: number, curr: any) => {
+    return acc + curr.quantity * curr.cost;
+  }, 0);
 
   return (
     <>
@@ -33,14 +40,19 @@ function BandForm({ band }: BandFormProps) {
           <div className="grid grid-row">
             {band?.ticketTypes?.map((ticket: any) => (
               <>
-                <TicketType ticket={ticket} />
+                <TicketType
+                  ticket={ticket}
+                  onChange={(quantity) =>
+                    updateCart({ type: ticket.type, quantity: parseInt(quantity), cost: ticket.cost })
+                  }
+                />
                 <div className="bg-sky-700 h-px" />
               </>
             ))}
           </div>
           <div className="grid grid-row gap-2">
             <p className="mb-6 mt-6 text-2xl flex justify-between uppercase">
-              Total <span>$0</span>
+              Total <span>{currencyFormatter(cartTotal, 2)}</span>
             </p>
             <div className="grid grid-cols-2 gap-2">
               <PaymentInput placeholder="First Name" />

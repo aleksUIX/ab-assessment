@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { ChakraProvider } from "@chakra-ui/react";
 
-import { CartContextProvider } from "./context/CartContext.tsx";
-import { CatalogContextProvider } from "./context/CatalogContext.tsx";
+import { CartContextProvider } from "./context/CartContext/index.tsx";
+import { CatalogContextProvider } from "./context/CatalogContext/index.tsx";
 
 import theme from "./theme/index.ts";
 import App from "./App.tsx";
