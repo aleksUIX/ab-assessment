@@ -10,6 +10,7 @@ interface CartContextInterface {
   paymentInfo: PaymentInfoInterface;
   updatePaymentInfo: (updatedPaymentInfo: PaymentInfoInterface) => void;
   checkOut: () => void;
+  paymentFinished: boolean;
 }
 
 interface PaymentInfoInterface {

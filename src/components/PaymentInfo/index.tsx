@@ -5,8 +5,6 @@ import PaymentInput from "./PaymentInput";
 import expiryDateFormat from "../../utils/expiryDateFormat";
 import { CartContext } from "../../context/CartContext";
 
-
-
 function PaymentInfo() {
   const cartCtx = useContext(CartContext);
   const { cart, checkOut, paymentInfo, updatePaymentInfo } = cartCtx;

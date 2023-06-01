@@ -19,6 +19,7 @@ function createInitialPaymentInfo() {
 
 export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
   const [cart, setCart] = useState(createInitialCart());
+  const [paymentFinished, setPaymentFinished] = useState(false);
   const [paymentInfo, setPaymentInfo] = useState(createInitialPaymentInfo());
 
   const updateCart = (cartItem: CartItemInterface) => {
@@ -55,6 +56,7 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
       "Payment Details",
       JSON.stringify(paymentInfo, null, 2)
     );
+    setPaymentFinished(true);
   };
 
   return (
@@ -65,6 +67,7 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
         paymentInfo,
         updatePaymentInfo,
         checkOut,
+        paymentFinished
       }}
     >
       {children}
