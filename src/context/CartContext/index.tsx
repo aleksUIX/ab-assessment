@@ -1,14 +1,25 @@
 import React, { createContext, useState } from "react";
 
+export const CartContext = createContext({} as CartContextInterface);
+
 function createInitialCart() {
   return [] as CartItemInterface[];
 }
 
-export const CartContext = createContext({} as CartContextInterface);
+function createInitialPaymentInfo() {
+  return {
+    firstName: "",
+    lastName: "",
+    address: "",
+    cardNumber: "",
+    expiryDate: "",
+    cvv: "",
+  } as PaymentInfoInterface;
+}
 
 export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
   const [cart, setCart] = useState(createInitialCart());
-
+  const [paymentInfo, setPaymentInfo] = useState(createInitialPaymentInfo());
 
   const updateCart = (cartItem: CartItemInterface) => {
     // check if item is already in cart
@@ -20,7 +31,6 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
     if (!itemInCart) {
       setCart([...cart, cartItem]);
     } else {
-
       // update cart with new quantity
       const updatedCart = cart.map((item: CartItemInterface) => {
         if (item.type === cartItem.type) {
@@ -34,12 +44,27 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
     }
   };
 
+  const updatePaymentInfo = (paymentInfo: PaymentInfoInterface) => {
+    setPaymentInfo(paymentInfo);
+  };
+
+  const checkOut = () => {
+    console.log(
+      "Thank you for your purchase! Your order is:",
+      JSON.stringify(cart, null, 2),
+      "Payment Details",
+      JSON.stringify(paymentInfo, null, 2)
+    );
+  };
 
   return (
     <CartContext.Provider
       value={{
         cart,
         updateCart,
+        paymentInfo,
+        updatePaymentInfo,
+        checkOut,
       }}
     >
       {children}

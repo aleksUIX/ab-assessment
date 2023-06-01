@@ -28,7 +28,7 @@ function TicketType({ ticket, onChange }: TicketFormProps) {
             min={0}
             onChange={(value) =>  {
               const asNum = parseInt(value)
-              if (!isNaN(asNum) && asNum > 0) {
+              if (!isNaN(asNum) && asNum > -1) {
                 onChange(asNum)
               }
             }}
