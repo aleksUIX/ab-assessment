@@ -38,7 +38,7 @@ function BandForm({ band }: BandFormProps) {
                     })
                   }
                 />
-                <div className="bg-sky-700 h-px" />
+                <div className="bg-gray-400 h-px" />
               </>
             ))}
           </div>
