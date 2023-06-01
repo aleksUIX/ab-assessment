@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Button } from "@chakra-ui/react";
 
 import PaymentInput from "./PaymentInput";
-import expiryDateFormat from "../../utils/expiryDateFormat";
+import expiryDateFormatter from "../../utils/expiryDateFormatter";
 import { CartContext } from "../../context/CartContext";
 
 function PaymentInfo() {
@@ -21,14 +21,14 @@ function PaymentInfo() {
         <PaymentInput
           placeholder="First Name"
           isRequired
-          onChange={(e) =>
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             updatePaymentInfo({ ...paymentInfo, firstName: e.target.value })
           }
         />
         <PaymentInput
           placeholder="Last Name"
           isRequired
-          onChange={(e) =>
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             updatePaymentInfo({ ...paymentInfo, lastName: e.target.value })
           }
         />
@@ -36,7 +36,7 @@ function PaymentInfo() {
       <PaymentInput
         placeholder="Address"
         isRequired
-        onChange={(e) =>
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           // TODO: add formatting and validation
           updatePaymentInfo({ ...paymentInfo, address: e.target.value })
         }
@@ -46,7 +46,7 @@ function PaymentInfo() {
         placeholder="0000 0000 0000 0000"
         isRequired
         type="number"
-        onChange={(e) =>
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           // TODO: add formatting and validation
           updatePaymentInfo({ ...paymentInfo, cardNumber: e.target.value })
         }
@@ -55,20 +55,20 @@ function PaymentInfo() {
         <PaymentInput
           placeholder="MM / YY"
           isRequired
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             // example of formatting input
             updatePaymentInfo({
               ...paymentInfo,
               expiryDate: e.target.value.replace(/\//g, ""),
             });
           }}
-          value={expiryDateFormat(expiryDate)}
+          value={expiryDateFormatter(expiryDate)}
         />
         <PaymentInput
           placeholder="CVV"
           maxLength={3}
           isRequired
-          onChange={(e) =>
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             // TODO: add formatting and validation
             updatePaymentInfo({ ...paymentInfo, cvv: e.target.value })
           }

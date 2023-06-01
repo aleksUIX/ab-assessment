@@ -19,4 +19,3 @@ export default function format(val: string) {
 
   return `${month}/${year}`;
 };
-

@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "jest"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.7.0",
@@ -22,9 +23,10 @@
     "sanitize-html": "^2.10.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/jest-dom": "*",
+    "@testing-library/react": "*",
+    "@testing-library/user-event": "*",
+    "@types/jest": "^27.0.2",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@types/sanitize-html": "^2.9.0",
@@ -35,8 +37,13 @@
     "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "*",
+    "jest-environment-jsdom": "^29.5.0",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
+    "ts-jest": "*",
+    "ts-node": "*",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
   }

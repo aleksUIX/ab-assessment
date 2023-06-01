@@ -15,7 +15,7 @@ export const CatalogContextProvider = ({
 }: React.PropsWithChildren) => {
   // we'll keep the catalog in state for now
   // there is no need to update it in this use case though
-  const [catalog, setCatalog] = useState<CatalogInterface[]>(
+  const [catalog] = useState<CatalogInterface[]>(
     createInitialCatalog()
   );
 
