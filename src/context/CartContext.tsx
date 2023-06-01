@@ -1,33 +1,39 @@
 import React, { createContext, useState } from "react";
 
-interface CartInterface {
-  timeRange: number[];
-  tags: string[];
-  sources: string[];
-  searchingPhrase: string;
+interface CartItemInterface {
+  id: string;
+  quantity: number;
 }
 
-interface CartContextInterface {}
+function createInitialCart() {
+  return {
+      id: "",
+      quantity: 0,
+    }
+}
+
+interface CartContextInterface {
+  cart: CartItemInterface,
+  updateCart: (updatedCart: CartItemInterface) => void;
+}
 
 export const CartContext = createContext({} as CartContextInterface);
 
 export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
-  const [items, setItems] = useState<string[]>([]);
+  const [cart, setItems] = useState<CartItemInterface>(createInitialCart());
 
-  const updateCart = (updatedCart: CartInterface) => {
+  const updateCart = (updatedCart: CartItemInterface) => {
     // update filter state
-    if (updatedCart?.tags) {
-      setItems(updatedCart.tags);
+    if (updatedCart) {
+      setItems(updatedCart);
     }
   };
 
   return (
     <CartContext.Provider
       value={{
-        cart: {
-          items,
-        },
-        updateCart,
+        cart,
+        updateCart
       }}
     >
       {children}

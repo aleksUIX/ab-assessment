@@ -4,6 +4,7 @@ import sanitizeHtml from "sanitize-html";
 import { Button, Input } from "@chakra-ui/react";
 
 import expiryDateFormat from "../utils/expiryDateFormat";
+import dateFormatter from "../utils/dateFormatter";
 import TicketType from "./TicketType";
 
 interface BandFormProps {
@@ -20,8 +21,8 @@ function BandForm({ band }: BandFormProps) {
       <div className="grid grid-cols-5 gap-12">
         <div className="col-span-5">
           <h1 className="text-4xl mb-4 font-bold">{name}</h1>
+          <h2>{dateFormatter(date)}</h2>
           <h2>{location}</h2>
-          <h2>{date}</h2>
         </div>
         <div className="col-span-2 gap-12">
           <img src={imgUrl} alt={name} className="mb-12" />
