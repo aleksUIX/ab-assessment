@@ -18,7 +18,8 @@
     "html-react-parser": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-number-format": "^5.2.2"
+    "react-number-format": "^5.2.2",
+    "sanitize-html": "^2.10.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",

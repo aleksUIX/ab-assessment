@@ -1,4 +1,3 @@
-import { useState } from "react";
 import currencyFormatter from "../utils/currencyFormatter";
 
 import {
@@ -21,7 +20,7 @@ function TicketType({ ticket }: TicketFormProps) {
       <div className="col-span-3">
         <p className="text-2xl mb-4">{name}</p>
         <p className="mb-4">{description}</p>
-        <p className="text-2xl">{currencyFormatter(cost)}</p>
+        <p className="text-2xl">{currencyFormatter(cost / 100)}</p>
       </div>
       <div className="flex justify-end">
         <div className="w-20">
