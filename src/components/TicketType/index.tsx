@@ -8,6 +8,8 @@ import {
   NumberDecrementStepper,
 } from "@chakra-ui/react";
 
+
+
 function TicketType({ ticket, onChange }: TicketFormProps) {
   const { name, description, cost } = ticket;
 

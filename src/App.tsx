@@ -12,8 +12,7 @@ function App() {
 
   return (
     <>
-      {/* <h1>Ticket Reservation System</h1> */}
-      <BandForm band={catalog[0]} />
+      <BandForm band={catalog[1]} />
     </>
   );
 }

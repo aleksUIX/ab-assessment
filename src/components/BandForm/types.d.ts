@@ -1,3 +1,3 @@
 interface BandFormProps {
-  band: any;
+  band: CatalogInterface;
 }

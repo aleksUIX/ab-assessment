@@ -9,6 +9,7 @@ export const CartContext = createContext({} as CartContextInterface);
 export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
   const [cart, setCart] = useState(createInitialCart());
 
+
   const updateCart = (cartItem: CartItemInterface) => {
     // check if item is already in cart
     const itemInCart = cart.find(
@@ -19,8 +20,8 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
     if (!itemInCart) {
       setCart([...cart, cartItem]);
     } else {
-      
-      // update cart
+
+      // update cart with new quantity
       const updatedCart = cart.map((item: CartItemInterface) => {
         if (item.type === cartItem.type) {
           return cartItem;
@@ -32,6 +33,7 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
       setCart(updatedCart);
     }
   };
+
 
   return (
     <CartContext.Provider

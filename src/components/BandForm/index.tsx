@@ -1,17 +1,16 @@
 import { useContext } from "react";
-import htmlParse from "html-react-parser";
-import sanitizeHtml from "sanitize-html";
 
 import { CartContext } from "../../context/CartContext";
 
+import BandInfo from '../BandInfo'
 import TicketType from "../TicketType";
 import PaymentInfo from "../PaymentInfo";
 
 import currencyFormatter from "../../utils/currencyFormatter";
-import dateFormatter from "../../utils/dateFormatter";
+
+
 
 function BandForm({ band }: BandFormProps) {
-  const { name, location, description_blurb, date, imgUrl } = band;
   const cartCtx = useContext(CartContext);
   const { cart, updateCart } = cartCtx;
 
@@ -23,15 +22,7 @@ function BandForm({ band }: BandFormProps) {
   return (
     <>
       <div className="grid grid-cols-5 gap-12">
-        <div className="col-span-5">
-          <h1 className="text-4xl mb-4 font-bold">{name}</h1>
-          <h2>{dateFormatter(date)}</h2>
-          <h2>{location}</h2>
-        </div>
-        <div className="col-span-2 gap-12">
-          <img src={imgUrl} alt={name} className="mb-12" />
-          <div>{htmlParse(sanitizeHtml(description_blurb))}</div>
-        </div>
+        <BandInfo band={band} />
         <div className="col-span-3 bg-gray-100 p-12 pt-8">
           <h2 className="text-2xl font-bold mb-2">Select Tickets</h2>
           <div className="grid grid-row">
