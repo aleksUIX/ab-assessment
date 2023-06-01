@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import { CatalogContext } from "./context/CatalogContext";
 
-import BandForm from "./components/BandForm";
+import BandForm from "./containers/BandForm";
 
 import "./App.css";
 
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-      <BandForm band={catalog[1]} />
+      <BandForm band={catalog[0]} />
     </>
   );
 }

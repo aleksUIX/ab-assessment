@@ -1,4 +1,4 @@
-import PaymentInput from "../components/PaymentInfo/PaymentInput";
+import PaymentInput from "./PaymentInput";
 import { render, screen, fireEvent  } from '@testing-library/react';
 
 

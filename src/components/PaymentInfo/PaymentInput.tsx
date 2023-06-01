@@ -8,8 +8,8 @@ export default function PaymentInput(props: React.ComponentProps<typeof Input>) 
     <Input
       bg="white"
       size="lg"
-      borderRadius={0}
-      borderColor="grey"
+      borderRadius={4}
+      borderColor="skyblue"
       {...props}
     />
   );

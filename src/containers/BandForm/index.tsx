@@ -2,9 +2,10 @@ import { useContext } from "react";
 
 import { CartContext } from "../../context/CartContext";
 
-import BandInfo from "../BandInfo";
-import TicketType from "../TicketType";
-import PaymentInfo from "../PaymentInfo";
+import BandInfo from "../../components/BandInfo";
+import TicketType from "../../components/TicketType";
+import PaymentInfo from "../../components/PaymentInfo";
+import PaymentSuccessful from "../../components/PaymentSuccessful";
 
 import currencyFormatter from "../../utils/currencyFormatter";
 
@@ -20,7 +21,7 @@ function BandForm({ band }: BandFormProps) {
   return (
     <div className="grid grid-cols-5 gap-12">
       <BandInfo band={band} />
-      <div className="col-span-3 bg-gray-100 p-12 pt-8">
+      <div className="col-span-3 bg-indigo-50 p-12 pt-8">
         {!paymentFinished ? (
           <>
             <h2 className="text-2xl font-bold mb-2">Select Tickets</h2>
@@ -49,14 +50,7 @@ function BandForm({ band }: BandFormProps) {
             </div>
           </>
         ) : (
-          <div className="flex flex-col">
-            <p className="text-2xl text-center mt-12">
-              Thank you for making the purchase!
-            </p>
-            <p className="text-xl text-center">
-              You will receive an email with your tickets shortly.
-            </p>
-          </div>
+          <PaymentSuccessful />
         )}
       </div>
     </div>
