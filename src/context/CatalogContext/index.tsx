@@ -3,9 +3,23 @@ import React, { createContext, useState } from "react";
 import punkBand from "../../band-json/punk-band.json";
 import kpopBand from "../../band-json/kpop-band.json";
 import skaBand from "../../band-json/ska-band.json";
+import { useParams } from "react-router-dom";
 
+// the catalog is built from the json files
+// in a real project we would probably use a database
+// one way to do it is to use a fetch method or a library like React Query to fetch the data
+// TODO: add a database and fetch the data
 function createInitialCatalog() {
   return [punkBand, kpopBand, skaBand];
+}
+
+function createInitialCatalogItem(catalog: CatalogInterface[]) {
+  const { bandId = 'btess' } = useParams<{ bandId: string }>();
+
+  // pick band from catalog
+  const band = catalog.find((band: any) => band.id === bandId);
+
+  return band
 }
 
 export const CatalogContext = createContext({} as CatalogContextInterface);
@@ -18,11 +32,13 @@ export const CatalogContextProvider = ({
   const [catalog] = useState<CatalogInterface[]>(
     createInitialCatalog()
   );
+  const [catalogItem, setCatalogItem] = useState(createInitialCatalogItem(catalog));
 
   return (
     <CatalogContext.Provider
       value={{
         catalog,
+        catalogItem
       }}
     >
       {children}

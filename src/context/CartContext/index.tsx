@@ -6,6 +6,7 @@ function createInitialCart() {
   return [] as CartItemInterface[];
 }
 
+// predefine payment information 
 function createInitialPaymentInfo() {
   return {
     firstName: "",
@@ -22,6 +23,7 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
   const [paymentFinished, setPaymentFinished] = useState(false);
   const [paymentInfo, setPaymentInfo] = useState(createInitialPaymentInfo());
 
+  // changes to cart contents
   const updateCart = (cartItem: CartItemInterface) => {
     // check if item is already in cart
     const itemInCart = cart.find(
@@ -50,13 +52,18 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
   };
 
   const checkOut = () => {
+    // this is where you would send the cart and payment info to a server
     console.log(
       "Thank you for your purchase! Your order is:",
       JSON.stringify(cart, null, 2),
       "Payment Details",
       JSON.stringify(paymentInfo, null, 2)
     );
+
+    // change state to checkout complete
     setPaymentFinished(true);
+
+    //TODO: add transaction persistence here
   };
 
   return (

@@ -1,21 +1,30 @@
-import { useContext } from "react";
+import { Route, Routes } from "react-router-dom";
 
-import { CatalogContext } from "./context/CatalogContext";
-
-import BandForm from "./containers/BandForm";
+import { CartContextProvider } from "./context/CartContext/index.tsx";
+import { CatalogContextProvider } from "./context/CatalogContext/index.tsx";
+import { baseRoutes } from "./routes";
 
 import "./App.css";
 
 function App() {
-  const catalogCtx = useContext(CatalogContext);
-  const { catalog } = catalogCtx;
-
-  // the spec does not call for navigation, so I hardcoded the first band
-  // TODO: add navidation to allow user to select a band
   return (
-    <>
-      <BandForm band={catalog[0]} />
-    </>
+    <Routes>
+      {[...baseRoutes].map(({ key, path, component }) => (
+        <Route
+          key={key}
+          path={path}
+          element={<AppRoute component={component} />}
+        />
+      ))}
+    </Routes>
+  );
+}
+
+function AppRoute({ component }: any) {
+  return (
+    <CatalogContextProvider>
+      <CartContextProvider>{component}</CartContextProvider>
+    </CatalogContextProvider>
   );
 }
 

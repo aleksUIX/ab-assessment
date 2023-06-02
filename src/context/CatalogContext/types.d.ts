@@ -5,7 +5,7 @@ interface TicketInterface {
   cost: number;
 }
 
-interface CatalogInterface {
+interface CatalogInterface{
   name: string;
   id: string;
   date: number;
@@ -17,4 +17,5 @@ interface CatalogInterface {
 
 interface CatalogContextInterface {
   catalog: CatalogInterface[];
+  catalogItem: CatalogInterface;
 }

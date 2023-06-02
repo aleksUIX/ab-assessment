@@ -13,7 +13,7 @@ function BandInfo({ band }: BandFormProps) {
 
   return (
     <>
-      <div className="col-span-5">
+      <div className="pb-6 md:pb-0 col-span-5">
         <h1 className="text-4xl mb-4 font-bold">{name}</h1>
         <h2>{dateFormatter(date)}</h2>
         <h2>{location}</h2>

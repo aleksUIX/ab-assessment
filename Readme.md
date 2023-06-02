@@ -18,19 +18,33 @@ Run `npm run test` for jest dom and unit tests
 
 ### Word from the author
 
-#### Approach
-I focused on laying out component, container and state architecture that would be easy to extend and maintain. I also focused on making the app accessible and responsive. I used Chakra UI components for the form, but I also added some custom components to show how I would approach the problem. I used React Context for state management, but I would probably use Redux or another solution in a real project.
-
-Test coverage is not 100%, because I focused on setting up the testing pipeline and demonstrating its functionality, rather than providing full coverage. I would probably use Cypress for end to end testing in a real project.
-
 #### Features
+- Component and container architecture
+- Dumb components
+- State management with React Context
+- Business logic handled in context
 - Simple form validation
 - Mock form submission
 - Extendable internationalization (formatting)
 - Support for data formats
 - Responsiveness
+- Unit and React tests
+- Accessibility
 
+#### Some things I would add / do differently in a real project
+- Use Redux or another state management solution
+- Use Cypress for end to end testing
+- Ensure 100% test coverage
+- Improve UI, style and visual attractiveness
+- Add persistence layer
+- Use a more robust and configurable form validation solution / service
+- Use a more robust and configurable internationalization solution / service
+- Use a more robust and configurable data formatting solution / service
 
+#### Approach
+I focused on laying out component, container and state architecture that would be easy to extend and maintain. I also focused on making the app accessible and responsive. I used Chakra UI components for the form, but I also added some custom components to show how I would approach the problem. I used React Context for state management, but I would probably use Redux or another solution in a real project.
+
+Test coverage is not 100%, because I focused on setting up the testing pipeline and demonstrating its functionality, rather than providing full coverage. I would probably use Cypress for end to end testing in a real project.
 
 ### Design and implementation choices
 
