@@ -2,7 +2,7 @@
   "name": "Ticket Checkout System",
   "author": "Alex Sekowski hi@aleks.rocks",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -8,6 +8,9 @@ import dateFormatter from "../../utils/dateFormatter";
 function BandInfo({ band }: BandFormProps) {
   const { name, location, description_blurb, date, imgUrl } = band;
 
+  // sanitize the external HTML and parse into renderable React code
+  const descriptionContent = htmlParse(sanitizeHtml(description_blurb))
+
   return (
     <>
       <div className="col-span-5">
@@ -17,7 +20,7 @@ function BandInfo({ band }: BandFormProps) {
       </div>
       <div className="col-span-2 gap-12">
         <img src={imgUrl} alt={name} className="mb-12" />
-        <div>{htmlParse(sanitizeHtml(description_blurb))}</div>
+        <div>{descriptionContent}</div>
       </div>
     </>
   );

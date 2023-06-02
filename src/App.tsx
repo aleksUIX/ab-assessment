@@ -10,6 +10,8 @@ function App() {
   const catalogCtx = useContext(CatalogContext);
   const { catalog } = catalogCtx;
 
+  // the spec does not call for navigation, so I hardcoded the first band
+  // TODO: add navidation to allow user to select a band
   return (
     <>
       <BandForm band={catalog[0]} />

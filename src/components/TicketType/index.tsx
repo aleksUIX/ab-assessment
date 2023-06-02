@@ -26,6 +26,7 @@ function TicketType({ ticket, onChange }: TicketFormProps) {
             className="bg-white border-gray-400"
             max={999}
             min={0}
+            defaultValue={0}
             onChange={(value) =>  {
               const asNum = parseInt(value)
               if (!isNaN(asNum) && asNum > -1) {
