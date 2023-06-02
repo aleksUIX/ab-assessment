@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useContext } from "react";
+import { CatalogContext } from "../CatalogContext";
 
 export const CartContext = createContext({} as CartContextInterface);
 
@@ -6,7 +7,7 @@ function createInitialCart() {
   return [] as CartItemInterface[];
 }
 
-// predefine payment information 
+// predefine payment information
 function createInitialPaymentInfo() {
   return {
     firstName: "",
@@ -19,6 +20,7 @@ function createInitialPaymentInfo() {
 }
 
 export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
+  const { catalogItem } = useContext(CatalogContext);
   const [cart, setCart] = useState(createInitialCart());
   const [paymentFinished, setPaymentFinished] = useState(false);
   const [paymentInfo, setPaymentInfo] = useState(createInitialPaymentInfo());
@@ -63,6 +65,7 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
     // change state to checkout complete
     setPaymentFinished(true);
 
+    localStorage.setItem("cart", JSON.stringify({ cart, paymentInfo, catalogItem }));
     //TODO: add transaction persistence here
   };
 
@@ -74,7 +77,7 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
         paymentInfo,
         updatePaymentInfo,
         checkOut,
-        paymentFinished
+        paymentFinished,
       }}
     >
       {children}

@@ -13,13 +13,12 @@ function createInitialCatalog() {
   return [punkBand, kpopBand, skaBand];
 }
 
-function createInitialCatalogItem(catalog: CatalogInterface[]) {
+function createInitialCatalogItem(catalog: CatalogInterface[]): CatalogInterface {
   const { bandId = 'btess' } = useParams<{ bandId: string }>();
 
   // pick band from catalog
   const band = catalog.find((band: any) => band.id === bandId);
-
-  return band
+  return band as CatalogInterface
 }
 
 export const CatalogContext = createContext({} as CatalogContextInterface);
@@ -32,7 +31,9 @@ export const CatalogContextProvider = ({
   const [catalog] = useState<CatalogInterface[]>(
     createInitialCatalog()
   );
-  const [catalogItem, setCatalogItem] = useState(createInitialCatalogItem(catalog));
+
+  // if we added navigation in page, we can use setCatalogItem to update the catalog item
+  const [catalogItem] = useState(createInitialCatalogItem(catalog));
 
   return (
     <CatalogContext.Provider
