@@ -14,6 +14,8 @@ function PaymentInfo() {
   // this could be moved to context and exposed as a function
   const hasItems = cart.length > 0 && cart.every((item) => item.quantity > 0);
   const hasPaymentInfo = Object.values(paymentInfo).every((val) => val !== "");
+  const cardNumberInvalid =
+    paymentInfo.cardNumber.length > 0 && paymentInfo.cardNumber.length !== 16;
 
   return (
     <>
@@ -47,15 +49,14 @@ function PaymentInfo() {
         isRequired
         type="number"
         // TODO: extend validation
-        isInvalid={
-          paymentInfo.cardNumber.length > 0 &&
-          paymentInfo.cardNumber.length !== 16
-        }
+        isInvalid={cardNumberInvalid}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           // TODO: add formatting
           updatePaymentInfo({ ...paymentInfo, cardNumber: e.target.value })
         }
       />
+      {/* Example of validation feedback for user */}
+      {cardNumberInvalid && <>Card number must be 16 digits</>}
       <div className="grid grid-cols-2 gap-2">
         <PaymentInput
           placeholder="MM / YY"
