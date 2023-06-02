@@ -24,7 +24,7 @@ function BandForm() {
   return (
     <div className="md:grid md:grid-cols-5 gap-12">
       <BandInfo band={catalogItem} />
-      <div className="md:col-span-3 bg-indigo-50 p-12 pt-8">
+      <div className="md:col-span-3 bg-indigo-50 p-12 pt-8 mt-8 md:mt-0">
         {!paymentFinished ? (
           <>
             <h2 className="text-2xl font-bold mb-2">Select Tickets</h2>
