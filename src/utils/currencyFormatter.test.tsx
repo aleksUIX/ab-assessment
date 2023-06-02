@@ -1,4 +1,4 @@
-import currencyFormatter from "../utils/currencyFormatter";
+import currencyFormatter from "./currencyFormatter";
 
 
 // Unit tests for currencyFormatter

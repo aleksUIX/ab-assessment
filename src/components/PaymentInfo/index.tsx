@@ -46,8 +46,13 @@ function PaymentInfo() {
         placeholder="0000 0000 0000 0000"
         isRequired
         type="number"
+        // TODO: extend validation
+        isInvalid={
+          paymentInfo.cardNumber.length > 0 &&
+          paymentInfo.cardNumber.length !== 16
+        }
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          // TODO: add formatting and validation
+          // TODO: add formatting
           updatePaymentInfo({ ...paymentInfo, cardNumber: e.target.value })
         }
       />
@@ -68,8 +73,13 @@ function PaymentInfo() {
           placeholder="CVV"
           maxLength={3}
           isRequired
+          // TODO: extend validation
+          isInvalid={
+            paymentInfo.cvv.length > 0 &&
+            (isNaN(parseInt(paymentInfo.cvv)) || paymentInfo.cvv.length !== 3)
+          }
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            // TODO: add formatting and validation
+            // TODO: add formatting
             updatePaymentInfo({ ...paymentInfo, cvv: e.target.value })
           }
         />
