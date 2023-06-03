@@ -9,7 +9,6 @@ The project has been set up with React, Vite, Tailwind, Chakra and Jest. Since t
 I commited everything to master branch for simplicity, but I would normally use a feature branch workflow.
 <br />
 <br />
-<br />
 
 ### Set up
 
@@ -18,7 +17,6 @@ I commited everything to master branch for simplicity, but I would normally use 
 3. Run `npm run dev` for development
 4. The app will run on [http://localhost:5173](http://localhost:5173)
 5. It will open on BTESS by default, but you can change that by using /flaming-potatoes and /cindy routes
-<br />
 <br />
 <br />
 
@@ -31,13 +29,11 @@ Hosted on firebase staging server [https://ab-assessment.web.app](https://ab-ass
 
 <br />
 <br />
-<br />
 
 ### Testing
 
 Run `npm run test` for jest dom and unit tests
 
-<br />
 <br />
 <br />
 
@@ -52,7 +48,6 @@ Run `npm run test` for jest dom and unit tests
 - Jest for unit and React tests
 - ESLint
 
-<br />
 <br />
 <br />
 
@@ -78,14 +73,12 @@ Run `npm run test` for jest dom and unit tests
 
 <br />
 <br />
-<br />
 
 ### Approach
 I focused on laying out component, container and state architecture that would be easy to extend and maintain. I also focused on making the app accessible and responsive. I used Chakra UI components for the form, but I also added some custom components to show how I would approach the problem. I used React Context for state management, but I would probably use Redux or another solution in a real project.
 
 Test coverage is not 100%, because I focused on setting up the testing pipeline and demonstrating its functionality, rather than providing full coverage. I would probably use Cypress for end to end testing in a real project.
 
-<br />
 <br />
 <br />
 
