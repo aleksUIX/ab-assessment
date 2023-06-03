@@ -46,7 +46,7 @@ function BandForm() {
                 </div>
               ))}
             </div>
-            <div className="grid grid-row gap-2">
+            <div className="grid grid-row gap-4">
               <p className="mb-6 mt-6 text-2xl flex justify-between uppercase">
                 Total <span>{currencyFormatter(cartTotal, 2)}</span>
               </p>

@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { Button } from "@chakra-ui/react";
+import { BsCreditCard2Back } from 'react-icons/bs'
+import { Button, InputGroup, InputRightElement } from "@chakra-ui/react";
 
 import PaymentInput from "./PaymentInput";
 import expiryDateFormatter from "../../utils/expiryDateFormatter";
@@ -19,7 +20,7 @@ function PaymentInfo() {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-2 gap-4">
         <PaymentInput
           placeholder="First Name"
           isRequired
@@ -44,20 +45,26 @@ function PaymentInfo() {
         }
       />
       <p className="mt-4 text-xl font-bold">Payment Details</p>
-      <PaymentInput
-        placeholder="0000 0000 0000 0000"
-        isRequired
-        type="number"
-        // TODO: extend validation
-        isInvalid={cardNumberInvalid}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          // TODO: add formatting
-          updatePaymentInfo({ ...paymentInfo, cardNumber: e.target.value })
-        }
-      />
+      <InputGroup>
+        <PaymentInput
+          placeholder="0000 0000 0000 0000"
+          max={9999999999999999}
+          isRequired
+          type="number"
+          // TODO: extend validation
+          isInvalid={cardNumberInvalid}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            // TODO: add formatting
+            updatePaymentInfo({ ...paymentInfo, cardNumber: e.target.value })
+          }
+        />
+        <InputRightElement className="flex align-center justify-center" h={12}>
+          <BsCreditCard2Back style={{fill: 'gray'}}/>
+        </InputRightElement>
+      </InputGroup>
       {/* Example of validation feedback for user */}
       {cardNumberInvalid && <>Card number must be 16 digits</>}
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-2 gap-4">
         <PaymentInput
           placeholder="MM / YY"
           isRequired
