@@ -9,7 +9,7 @@ export default function PaymentInput(props: React.ComponentProps<typeof Input>) 
       bg="white"
       size="lg"
       borderRadius={4}
-      borderColor="skyblue"
+      colorScheme={"facebook"}
       {...props}
     />
   );

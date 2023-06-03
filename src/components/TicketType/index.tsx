@@ -1,12 +1,5 @@
 import currencyFormatter from "../../utils/currencyFormatter";
-
-import {
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-} from "@chakra-ui/react";
+import QuantityInput from "../QuantityInput";
 
 
 
@@ -16,31 +9,20 @@ function TicketType({ ticket, onChange }: TicketFormProps) {
   return (
     <div className="grid grid-cols-4 py-6">
       <div className="col-span-3">
-        <p className="text-2xl mb-4">{name}</p>
-        <p className="mb-4">{description}</p>
+        <p className="text-2xl mb-6">{name}</p>
+        <p className="mb-6">{description}</p>
         <p className="text-2xl">{currencyFormatter(cost, 2)}</p>
       </div>
-      <div className="flex justify-end">
-        <div className="w-20">
-          <NumberInput
+      <div className="flex justify-end align-start">
+          <QuantityInput
             className="bg-white border-gray-400"
-            max={999}
-            min={0}
-            defaultValue={0}
-            onChange={(value) =>  {
-              const asNum = parseInt(value)
+            onChange={(value: string) => {
+              const asNum = parseInt(value);
               if (!isNaN(asNum) && asNum > -1) {
-                onChange(asNum)
+                onChange(asNum);
               }
             }}
-          >
-            <NumberInputField />
-            <NumberInputStepper>
-              <NumberIncrementStepper />
-              <NumberDecrementStepper />
-            </NumberInputStepper>
-          </NumberInput>
-        </div>
+          />
       </div>
     </div>
   );

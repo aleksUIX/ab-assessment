@@ -86,7 +86,7 @@ function PaymentInfo() {
         />
       </div>
       <Button
-        colorScheme="blue"
+        colorScheme={"facebook"}
         size="lg"
         borderRadius={0}
         className="mt-8"

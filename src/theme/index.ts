@@ -7,6 +7,10 @@ const config: ThemeConfig = {
 
 const theme = extendTheme({
   config,
+  fonts: {
+    heading: 'Roboto',
+    body: 'Roboto',
+  },
 });
 
 export default theme;
