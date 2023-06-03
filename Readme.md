@@ -41,6 +41,21 @@ Run `npm run test` for jest dom and unit tests
 <br />
 <br />
 
+### Design and implementation choices
+
+- Typescript
+- React with Vite: [https://vitejs.dev/](https://vitejs.dev/)
+- SWC for lightning speed builds: [https://github.com/vitejs/vite-plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc)
+- TailwindCSS styling base: [https://tailwindcss.com/](https://tailwindcss.com/)
+- Chakra UI components: [https://chakra-ui.com/](https://chakra-ui.com/)
+- React Context for state management
+- Jest for unit and React tests
+- ESLint
+
+<br />
+<br />
+<br />
+
 ### Features
 - Component and container architecture
 - Dumb components
@@ -54,6 +69,12 @@ Run `npm run test` for jest dom and unit tests
 - Responsiveness
 - Unit and React tests
 - Accessibility
+
+<br />
+
+### Lighthouse report
+
+![lighthouse](./lighthouse-report.png)
 
 <br />
 <br />
@@ -78,18 +99,5 @@ Test coverage is not 100%, because I focused on setting up the testing pipeline 
 - Use a more robust and configurable form validation solution / service
 - Use a more robust and configurable internationalization solution / service
 - Use a more robust and configurable data formatting solution / service
+- Improve SEO
   
-<br />
-<br />
-<br />
-
-### Design and implementation choices
-
-- Typescript
-- React with Vite: [https://vitejs.dev/](https://vitejs.dev/)
-- SWC for lightning speed builds: [https://github.com/vitejs/vite-plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc)
-- TailwindCSS styling base: [https://tailwindcss.com/](https://tailwindcss.com/)
-- Chakra UI components: [https://chakra-ui.com/](https://chakra-ui.com/)
-- React Context for state management
-- Jest for unit and React tests
-- ESLint
