@@ -54,6 +54,9 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
   };
 
   const checkOut = () => {
+    // remove spaces from card number
+    paymentInfo.cardNumber = paymentInfo.cardNumber.replace(/\s/g, "");
+
     // this is where you would send the cart and payment info to a server
     console.log(
       "Thank you for your purchase! Your order is:",

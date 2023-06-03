@@ -1,22 +1,23 @@
 import { useContext } from "react";
-import { BsCreditCard2Back } from 'react-icons/bs'
+import { BsCreditCard2Back } from "react-icons/bs";
 import { Button, InputGroup, InputRightElement } from "@chakra-ui/react";
 
 import PaymentInput from "./PaymentInput";
 import expiryDateFormatter from "../../utils/expiryDateFormatter";
+import cardNumberFormatter from "../../utils/cardNumberFormatter";
 import { CartContext } from "../../context/CartContext";
 
 function PaymentInfo() {
   const cartCtx = useContext(CartContext);
   const { cart, checkOut, paymentInfo, updatePaymentInfo } = cartCtx;
-  const { expiryDate } = paymentInfo;
+  const { expiryDate, cardNumber } = paymentInfo;
 
   // simple validation for enabling checkout button
   // this could be moved to context and exposed as a function
   const hasItems = cart.length > 0 && cart.every((item) => item.quantity > 0);
   const hasPaymentInfo = Object.values(paymentInfo).every((val) => val !== "");
   const cardNumberInvalid =
-    paymentInfo.cardNumber.length > 0 && paymentInfo.cardNumber.length !== 16;
+    paymentInfo.cardNumber.length > 0 && paymentInfo.cardNumber.length !== 19;
 
   return (
     <>
@@ -48,18 +49,20 @@ function PaymentInfo() {
       <InputGroup>
         <PaymentInput
           placeholder="0000 0000 0000 0000"
-          max={9999999999999999}
           isRequired
-          type="number"
+          // type="number"
           // TODO: extend validation
           isInvalid={cardNumberInvalid}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            // TODO: add formatting
-            updatePaymentInfo({ ...paymentInfo, cardNumber: e.target.value })
-          }
+          value={cardNumber}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            updatePaymentInfo({
+              ...paymentInfo,
+              cardNumber: cardNumberFormatter(e.target.value),
+            });
+          }}
         />
         <InputRightElement className="flex align-center justify-center" h={12}>
-          <BsCreditCard2Back style={{fill: 'gray'}}/>
+          <BsCreditCard2Back style={{ fill: "gray" }} />
         </InputRightElement>
       </InputGroup>
       {/* Example of validation feedback for user */}
