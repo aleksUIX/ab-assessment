@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 
 import { CatalogContext } from "../../context/CatalogContext";
 import { CartContext } from "../../context/CartContext";
@@ -17,9 +17,10 @@ function BandForm() {
   const { catalogItem } = catalogCtx;
 
   // sum up cart total
-  const cartTotal = cart.reduce((acc: number, curr: any) => {
-    return acc + curr.quantity * curr.cost;
-  }, 0);
+  const cartTotal = useMemo(() => {
+    return cart.reduce((acc, curr) => acc + curr.quantity * curr.cost, 0);
+  }, [cart]);
+  
 
   return (
     <div className="md:grid md:grid-cols-5 gap-12">
