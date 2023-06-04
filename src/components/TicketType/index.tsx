@@ -7,7 +7,7 @@ function TicketType({ ticket, onChange }: TicketFormProps) {
   const { name, description, cost } = ticket;
 
   return (
-    <div className="grid grid-cols-4 py-6">
+    <div className="grid grid-cols-1 lg:grid-cols-4 py-6">
       <div className="col-span-3">
         <p className="text-2xl mb-6">{name}</p>
         <p className="mb-6">{description}</p>

@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 
+import Layout from "./containers/Catalog";
+
 import { CartContextProvider } from "./context/CartContext/index.tsx";
 import { CatalogContextProvider } from "./context/CatalogContext/index.tsx";
 import { baseRoutes } from "./routes";
@@ -23,7 +25,9 @@ function App() {
 function AppRoute({ component }: any) {
   return (
     <CatalogContextProvider>
-      <CartContextProvider>{component}</CartContextProvider>
+      <CartContextProvider>
+        <Layout>{component}</Layout>
+      </CartContextProvider>
     </CatalogContextProvider>
   );
 }
