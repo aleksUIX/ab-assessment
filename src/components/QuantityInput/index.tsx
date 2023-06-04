@@ -17,7 +17,7 @@ function QuantityInput({ ...inputProps }) {
   return (
     <HStack maxW="320px" maxH="40px">
       <Button {...dec} colorScheme="facebook" size="sm">-</Button>
-      <Input w={16} {...input} color="black" background="white" />
+      <Input w={16} {...input} color="black" background="white" textAlign="center" />
       <Button {...inc} colorScheme="facebook" size="sm">+</Button>
     </HStack>
   );
