@@ -1,4 +1,3 @@
-import * as React from "react"
 import { ComponentDefaultProps } from "@chakra-ui/react"
 
 const LogoSVG = (props: ComponentDefaultProps) => (
