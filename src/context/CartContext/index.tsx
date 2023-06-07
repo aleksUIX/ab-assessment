@@ -1,4 +1,6 @@
 import React, { createContext, useState, useContext } from "react";
+import sanitizeHtml from "sanitize-html";
+
 import { CatalogContext } from "../CatalogContext";
 
 export const CartContext = createContext({} as CartContextInterface);
@@ -53,23 +55,29 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
     setPaymentInfo(paymentInfo);
   };
 
-  const checkOut = () => {
+  console.log(sanitizeHtml("<img src=x onerror=alert('img') />"));
+  console.log(sanitizeHtml("console.log('hello world')"));
+  console.log(sanitizeHtml("<script>alert('hello world')</script>"));
+
+  const checkOut = () => { 
     // remove spaces from card number
     paymentInfo.cardNumber = paymentInfo.cardNumber.replace(/\s/g, "");
-
-    // this is where you would send the cart and payment info to a server
-    console.log(
-      "Thank you for your purchase! Your order is:",
-      JSON.stringify(cart, null, 2),
-      "Payment Details",
-      JSON.stringify(paymentInfo, null, 2)
-    );
 
     // change state to checkout complete
     setPaymentFinished(true);
 
-    localStorage.setItem("cart", JSON.stringify({ cart, paymentInfo, catalogItem }));
-    //TODO: add transaction persistence here
+    // stringify cart and payment info and sanitize html
+    const cleanOutput = sanitizeHtml(JSON.stringify({ cart, paymentInfo, catalogItem }))
+
+    // TODO: add validation logic to check if payment info is valid after sanitization
+
+    localStorage.setItem(
+      "cart",
+      cleanOutput
+    );
+
+    // TODO: add transaction persistence here
+    console.log('persisted cart data', cleanOutput)
   };
 
   return (
