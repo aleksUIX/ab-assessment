@@ -55,10 +55,6 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
     setPaymentInfo(paymentInfo);
   };
 
-  console.log(sanitizeHtml("<img src=x onerror=alert('img') />"));
-  console.log(sanitizeHtml("console.log('hello world')"));
-  console.log(sanitizeHtml("<script>alert('hello world')</script>"));
-
   const checkOut = () => { 
     // remove spaces from card number
     paymentInfo.cardNumber = paymentInfo.cardNumber.replace(/\s/g, "");
