@@ -1,7 +1,8 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import sanitizeHtml from "sanitize-html";
 
 import { CatalogContext } from "../CatalogContext";
+import { useLocation } from "react-router-dom";
 
 export const CartContext = createContext({} as CartContextInterface);
 
@@ -26,6 +27,12 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
   const [cart, setCart] = useState(createInitialCart());
   const [paymentFinished, setPaymentFinished] = useState(false);
   const [paymentInfo, setPaymentInfo] = useState(createInitialPaymentInfo());
+  const location = useLocation();
+
+  // reset cart when location changes
+  useEffect(() => {
+    setCart(createInitialCart())
+  }, [location])
 
   // changes to cart contents
   const updateCart = (cartItem: CartItemInterface) => {
@@ -36,7 +43,7 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
 
     // if item is not in cart, add it
     if (!itemInCart) {
-      setCart([...cart, cartItem]);
+      setCart(prevCart => [...prevCart, cartItem]);
     } else {
       // update cart with new quantity
       const updatedCart = cart.map((item: CartItemInterface) => {

@@ -1,9 +1,9 @@
 import currencyFormatter from "../../utils/currencyFormatter";
 import QuantityInput from "../QuantityInput";
 
-
-
-function TicketType({ ticket, onChange }: TicketFormProps) {
+function TicketType({ ticket, value, onChange }: TicketFormProps) {
+  const max: number = 999,
+    min: number = 0;
   const { name, description, cost } = ticket;
 
   return (
@@ -14,15 +14,13 @@ function TicketType({ ticket, onChange }: TicketFormProps) {
         <p className="text-2xl">{currencyFormatter(cost, 2)}</p>
       </div>
       <div className="flex justify-end align-start">
-          <QuantityInput
-            className="bg-white border-gray-400"
-            onChange={(value: string) => {
-              const asNum = parseInt(value);
-              if (!isNaN(asNum) && asNum > -1) {
-                onChange(asNum);
-              }
-            }}
-          />
+        <QuantityInput
+          min={min}
+          max={max}
+          className="bg-white border-gray-400"
+          value={value || 0}
+          changeHandler={onChange}
+        />
       </div>
     </div>
   );

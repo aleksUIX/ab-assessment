@@ -20,7 +20,7 @@ function BandForm() {
   const cartTotal = useMemo(() => {
     return cart.reduce((acc, curr) => acc + curr.quantity * curr.cost, 0);
   }, [cart]);
-  
+
 
   return (
     <div className="md:grid md:grid-cols-5 gap-12">
@@ -33,6 +33,7 @@ function BandForm() {
               {catalogItem?.ticketTypes?.map((ticket: any, i) => (
                 <div key={i}>
                   <TicketType
+                    value={cart.find((item) => item.type === ticket.type)?.quantity!}
                     ticket={ticket}
                     onChange={(quantity) =>
                       updateCart({

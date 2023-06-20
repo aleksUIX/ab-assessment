@@ -1,26 +1,41 @@
-import { Input, Button, HStack, useNumberInput } from "@chakra-ui/react";
+import { Input, Button, HStack } from "@chakra-ui/react";
 
 function QuantityInput({ ...inputProps }) {
-  const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
-    useNumberInput({
-      step: 1,
-      defaultValue: 0,
-      min: 0,
-      // limited to 999 for now, this would normally be passed from an inventory API
-      max: 999,
-      onChange: inputProps.onChange,
-    });
-
-  // let's me use the Chakra UI props to style our components
-  const inc = getIncrementButtonProps();
-  const dec = getDecrementButtonProps();
-  const input = getInputProps();
+  const { min, max, changeHandler } = inputProps;
 
   return (
     <HStack maxW="320px" maxH="40px">
-      <Button {...dec} colorScheme="facebook" size="sm">-</Button>
-      <Input w={16} {...input} color="black" background="white" textAlign="center" />
-      <Button {...inc} colorScheme="facebook" size="sm">+</Button>
+      <Button
+        colorScheme="facebook"
+        size="sm"
+        onClick={() => {
+            changeHandler(Math.max(Math.min(inputProps.value - 1, max), min));
+        }}
+      >
+        -
+      </Button>
+      <Input
+        w={16}
+        {...inputProps}
+        onChange={(e: React.FormEvent<HTMLInputElement>) => {
+          const asNum = parseInt(e.currentTarget.value);
+          if (!isNaN(asNum) && asNum > -1) {
+            changeHandler(Math.max(Math.min(asNum + 1, max), min));
+          }
+        }}
+        color="black"
+        background="white"
+        textAlign="center"
+      />
+      <Button
+        colorScheme="facebook"
+        size="sm"
+        onClick={() => {
+            changeHandler(Math.max(Math.min(inputProps.value + 1, max), min));
+        }}
+      >
+        +
+      </Button>
     </HStack>
   );
 }
